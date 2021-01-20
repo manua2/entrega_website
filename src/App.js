@@ -1,6 +1,8 @@
 import React from "react";
-import Register from "./components/Register"
+import Register from "./components/Register";
 import Login from "./components/Login";
+import Home from "./components/Home";
+import "./app.css"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export const AuthContext = React.createContext();
@@ -12,6 +14,7 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
+    console.log(state, action)
     switch (action.type) {
         case "LOGIN":
             localStorage.setItem("user", JSON.stringify(action.payload.user));
@@ -23,6 +26,16 @@ const reducer = (state, action) => {
                 user: action.payload.user,
                 token: action.payload.user.token,
             };
+        case "REGISTER":
+            localStorage.setItem("user", JSON.stringify(action.payload.user));
+            localStorage.setItem("token", action.payload.user.token);
+            console.log(state, action)
+            return {
+                ...state,
+                isAuthenticated: true,
+                user: action.payload.user,
+                token: action.payload.user.token,
+            };   
         case "LOGOUT":
             localStorage.clear();
 
@@ -64,12 +77,13 @@ function App() {
         >
             {/* <Header /> */}
             <main className="app">
-                {console.log(state.isAuthenticated)}
                 {/* {!state.isAuthenticated ? <Login /> : <Home />} */}
                 <Router>
-
                     <div className="App">
                         <Switch>
+                            <Route path="/" exact>
+                            {!state.isAuthenticated ? <Login /> : <Home />}
+                            </Route>
                             <Route path="/login" exact>
                                 <Login />
                             </Route>

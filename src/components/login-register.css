@@ -1,0 +1,71 @@
+.outer {
+    display: table;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    vertical-align: middle;
+}
+  
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
+.input-label {
+    display: grid;
+    font-weight: 600;
+}
+
+.login-input, .registro-input {
+    outline-color: black;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #fafbfc;
+    width: 100%;
+    padding: 3px 7px;
+}
+
+.login-input:focus, .registro-input:focus {
+    border-color: #0366d6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(3,102,214,.3);
+}
+
+.login-register-fail {
+    color: red;
+    font-weight: 600;
+    margin-top: 7px;
+}
+
+.button {
+    background-color: #007bff;
+    border: 3px solid #0062cc;
+    color: white;
+    border-radius: 4px;
+    width: 100%;
+    padding: 4px;
+    width: 100%;
+    transition: background-color ease .3s;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.button:hover {
+    background-color: #0062cc;
+    transition: background-color ease .3s;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.loading {
+    width: 20px;
+    height: 20px;
+}

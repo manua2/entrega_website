@@ -1,4 +1,4 @@
-export const Home = ({ book }) => {
+export const Home = () => {
     return (
         <div>
             Hola
