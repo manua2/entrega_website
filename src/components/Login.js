@@ -77,7 +77,7 @@ export const Login = () => {
                     <div className="outer">
                         <div className="middle">
                             <div className="inner">
-                                <h1>Inicio de sesión</h1>
+                                <h1 className="titulo">Inicio de sesión</h1>
                                 <label htmlFor="email" className="input-label">
                                     Email
                                     <input

@@ -124,7 +124,7 @@ export const Login = () => {
                 <div className="middle">
                     <div className="inner">
                         <form onSubmit={handleFormSubmit}>
-                            <h1>Registrarse</h1>
+                            <h1 className="titulo">Registrarse</h1>
 
                             <label htmlFor="name" className="input-label">
                                 Nombre

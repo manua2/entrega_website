@@ -1,0 +1,59 @@
+.navigation,
+.sub-navigation {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation {
+    align-items: center;
+    background-color: #007bff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height: 70px;
+    top: 0;
+    padding-left: 15px;
+    z-index: 20;
+}
+
+.navigation > div {
+    display: flex;
+    align-items: center;
+}
+
+.navigation h1,
+.sub-navigation h5 {
+    color: white;
+    margin: 0;
+}
+
+.navigation button {
+    background-color: transparent;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    margin-left: 15px;
+    height: 100%;
+}
+
+.navigation button:hover {
+    cursor: pointer;
+    background-color: #0062cc;
+}
+
+.navigation button:focus {
+    outline: none !important;
+}
+
+.sub-navigation {
+    top: 70px;
+    background-color: #f7546e;
+    color: white;
+    padding: 6px 15px;
+    z-index: 10;
+}
+
+.login {
+    color: white;
+    margin-right: 10px;
+}
