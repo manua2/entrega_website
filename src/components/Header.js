@@ -22,7 +22,10 @@ export const Header = () => {
                         Cerrar sesión
                     </button>
                 ) : (
-                    <Link className="login" to="/login">Iniciar sesion</Link>
+                    <div>
+                        <Link className="login" to="/register">Crear cuenta</Link>
+                        <Link className="login" to="/login">Iniciar sesion</Link>
+                    </div>
                 )}
             </nav>
         </div>
