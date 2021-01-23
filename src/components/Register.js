@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../App";
-import "./login-register.css";
+import "./estilos/login-register.css";
 import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Redirect } from "react-router";
