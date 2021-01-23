@@ -21,7 +21,7 @@
     font-weight: 600;
 }
 
-.login-input, .registro-input {
+.input-style {
     outline-color: black;
     border: 1px solid #ced4da;
     border-radius: 5px;
@@ -30,7 +30,7 @@
     padding: 3px 7px;
 }
 
-.login-input:focus, .registro-input:focus {
+.input-style:focus {
     border-color: #0366d6;
     outline: none;
     box-shadow: 0 0 0 3px rgba(3,102,214,.3);
@@ -72,4 +72,9 @@
 
 .titulo {
     margin-top: 70px;
+}
+
+.create-match {
+    position: fixed;
+    outline: black;
 }

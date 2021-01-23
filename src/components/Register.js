@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../App";
-import "./estilos/login-register.css";
+import "./estilos/input-styles.css";
 import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Redirect } from "react-router";
@@ -134,7 +134,7 @@ export const Login = () => {
                                     onChange={handleInputChange}
                                     name="name"
                                     id="name"
-                                    className="registro-input"
+                                    className="input-style"
                                 />
                             </label>
 
@@ -146,7 +146,7 @@ export const Login = () => {
                                     onChange={handleInputChange}
                                     name="email"
                                     id="email"
-                                    className="registro-input"
+                                    className="input-style"
                                 />
                             </label>
 
@@ -158,7 +158,7 @@ export const Login = () => {
                                     onChange={handleInputChange}
                                     name="password"
                                     id="password"
-                                    className="registro-input"
+                                    className="input-style"
                                 />
                             </label>
 
