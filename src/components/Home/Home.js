@@ -22,7 +22,7 @@ export const Home = () => {
             {authState.isAuthenticated && (
                 <>
                     <button
-                        className="toggle-button"
+                        className="button"
                         onClick={toggleCreateMatch}
                     >
                         Crear partida
@@ -34,7 +34,7 @@ export const Home = () => {
                 </>
             )}
 
-            <p>hola</p>
+            <p className="test">hola</p>
         </div>
     );
 };

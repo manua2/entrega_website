@@ -1,19 +1,9 @@
-.outer {
-    display: table;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-}
-
-.middle {
-    vertical-align: middle;
-}
-  
-.inner {
-    margin-left: auto;
-    margin-right: auto;
+.center-div {
     width: 250px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;    
+    position: fixed;
 }
 
 .input-label {
@@ -28,12 +18,13 @@
     background-color: #fafbfc;
     width: 100%;
     padding: 3px 7px;
+    margin-bottom: 5px;
 }
 
 .input-style:focus {
     border-color: #0366d6;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(3,102,214,.3);
+    box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.3);
 }
 
 .login-register-fail {
@@ -50,7 +41,7 @@
     width: 100%;
     padding: 4px;
     width: 100%;
-    transition: background-color ease .3s;
+    transition: background-color ease 0.3s;
     margin-top: 5px;
     margin-bottom: 5px;
     font-weight: 600;
@@ -58,7 +49,7 @@
 
 .button:hover {
     background-color: #0062cc;
-    transition: background-color ease .3s;
+    transition: background-color ease 0.3s;
 }
 
 .button:focus {
@@ -70,11 +61,9 @@
     height: 20px;
 }
 
-.titulo {
-    margin-top: 70px;
-}
-
 .create-match {
-    position: fixed;
-    outline: black;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid grey;
 }

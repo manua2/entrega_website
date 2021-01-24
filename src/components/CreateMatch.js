@@ -5,6 +5,7 @@ import "./estilos/input-styles.css";
 const CreateMatch = (props) => {
     const { state: authState } = React.useContext(AuthContext);
     const { dispatch } = React.useContext(AuthContext);
+    const [errorMessage, setErrorMessage] = React.useState(null);
 
     const [opponent, setOpponent] = React.useState("");
     const player = authState.user.email;
@@ -13,7 +14,22 @@ const CreateMatch = (props) => {
         props.onClose && props.onClose(e);
     };
 
-    const onSubmit = () => {
+    function testEmail(x) {
+        if (/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+            x
+        )) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    // const submitDefault = (e) => {
+    //     e.preventDefault();
+    // }
+
+    const onSubmit = (event) => {
+        event.preventDefault();
         dispatch({
             type: "CREATE_MATCH",
         });
@@ -22,6 +38,15 @@ const CreateMatch = (props) => {
             player,
             opponent,
         };
+
+        const email = document.getElementById("opponent").value;
+        console.log(email)
+        var invalidEmail;
+        if (!testEmail(email)) {
+            invalidEmail = true;
+        } else if (testEmail(email)) {
+            invalidEmail = false;
+        }
 
         fetch(
             `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/match`,
@@ -55,6 +80,13 @@ const CreateMatch = (props) => {
                 dispatch({
                     type: "FAILED_TO_CREATE_MATCH",
                 });
+                if (invalidEmail === true) {
+                    setErrorMessage("Email invalido");
+                } else if (error.status === 403) {
+                    setErrorMessage("Ese es tu email")
+                } else {
+                    setErrorMessage("Ese email no esta registrado");
+                }
             });
     };
 
@@ -63,51 +95,48 @@ const CreateMatch = (props) => {
     }
 
     return (
-        <div className="outer">
-            <div className="middle">
-                <div className="inner">
-                    <div className="create-match">
-                        <form>
-                            <div className="modal-form-inputs">
-                                <label
-                                    htmlFor="opponent"
-                                    className="input-label"
-                                >
-                                    opponent
-                                </label>
-                                <input
-                                    id="opponent"
-                                    name="opponent"
-                                    type="text"
-                                    value={opponent}
-                                    onChange={(e) =>
-                                        setOpponent(e.target.value)
-                                    }
-                                    className="input-style"
-                                />
-                            </div>
-                            <div className="form-action clearfix">
-                                <button
-                                    type="button"
-                                    id="overlay-confirm-button"
-                                    className="button button-primary"
-                                    onClick={onSubmit}
-                                >
-                                    Crear partida
-                                </button>
-
-                                <button
-                                    type="button"
-                                    id="overlay-cancel-button"
-                                    className="button button-default small close-overlay pull-right"
-                                    onClick={onClose}
-                                >
-                                    Cancelar
-                                </button>
-                            </div>
-                        </form>
+        <div className="center-div">
+            <div className="create-match">
+                <form onSubmit={onSubmit}>
+                    <div className="modal-form-inputs">
+                        <label htmlFor="opponent" className="input-label">
+                            Ingresar Email de oponente
+                        </label>
+                        <input
+                            id="opponent"
+                            name="opponent"
+                            type="text"
+                            value={opponent}
+                            onChange={(e) => setOpponent(e.target.value)}
+                            className="input-style"
+                        />
                     </div>
-                </div>
+                    <div>
+                        <button
+                            type="button"
+                            id="overlay-confirm-button"
+                            className="button button-primary"
+                            onClick={onSubmit}
+                        >
+                            Crear partida
+                        </button>
+
+                        <button
+                            type="button"
+                            id="overlay-cancel-button"
+                            className="button button-default small close-overlay pull-right"
+                            onClick={onClose}
+                        >
+                            Cancelar
+                        </button>
+
+                        {errorMessage !== "" && (
+                            <div className="login-register-fail">
+                                {errorMessage}
+                            </div>
+                        )}
+                    </div>
+                </form>
             </div>
         </div>
     );

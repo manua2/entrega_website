@@ -34,40 +34,40 @@ export const Login = () => {
             errorMessage: null,
         });
 
-            fetch(
-                `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/login`,
-                {
-                    method: "post",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        email: data.email,
-                        password: data.password,
-                    }),
+        fetch(
+            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/login`,
+            {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: data.email,
+                    password: data.password,
+                }),
+            }
+        )
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
                 }
-            )
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    }
 
-                    throw response;
-                })
-                .then((data) => {
-                    dispatch({
-                        type: "LOGIN",
-                        payload: data,
-                    });
-                })
-                .catch((error) => {
-                    setData({
-                        ...data,
-                        isSubmitting: false,
-                        errorMessage: "Credenciales invalidas",
-                    });
+                throw response;
+            })
+            .then((data) => {
+                dispatch({
+                    type: "LOGIN",
+                    payload: data,
                 });
-        if (data.errorMessage === '') {
+            })
+            .catch((error) => {
+                setData({
+                    ...data,
+                    isSubmitting: false,
+                    errorMessage: "Credenciales invalidas",
+                });
+            });
+        if (data.errorMessage === null) {
             setSubmitted(true);
         }
     };
@@ -76,68 +76,58 @@ export const Login = () => {
         <div className="container">
             <form onSubmit={handleFormSubmit}>
                 <div className="">
-                    <div className="outer">
-                        <div className="middle">
-                            <div className="inner">
-                                <h1 className="titulo">Inicio de sesión</h1>
-                                <label htmlFor="email" className="input-label">
-                                    Email
-                                    <input
-                                        type="text"
-                                        value={data.email}
-                                        onChange={handleInputChange}
-                                        name="email"
-                                        id="email"
-                                        className="input-style"
-                                    />
-                                </label>
+                    <div className="center-div">
+                        <h1>Inicio de sesión</h1>
+                        <label htmlFor="email" className="input-label">
+                            Email
+                            <input
+                                type="text"
+                                value={data.email}
+                                onChange={handleInputChange}
+                                name="email"
+                                id="email"
+                                className="input-style"
+                            />
+                        </label>
 
-                                <label
-                                    htmlFor="password"
-                                    className="input-label"
-                                >
-                                    Contraseña
-                                    <input
-                                        type="password"
-                                        value={data.password}
-                                        onChange={handleInputChange}
-                                        name="password"
-                                        id="password"
-                                        className="input-style"
-                                    />
-                                </label>
+                        <label htmlFor="password" className="input-label">
+                            Contraseña
+                            <input
+                                type="password"
+                                value={data.password}
+                                onChange={handleInputChange}
+                                name="password"
+                                id="password"
+                                className="input-style"
+                            />
+                        </label>
 
-                                <button
-                                    disabled={data.isSubmitting}
-                                    className="button"
-                                >
-                                    {data.isSubmitting ? (
-                                        <Spinner
-                                            className="loading"
-                                            animation="border"
-                                        />
-                                    ) : (
-                                        "Ingresar"
-                                    )}
-                                    {submitted && (
-                                        <Redirect
-                                            push
-                                            to={{
-                                                pathname: "/",
-                                            }}
-                                        />
-                                    )}
-                                </button>
+                        <button disabled={data.isSubmitting} className="button">
+                            {data.isSubmitting ? (
+                                <Spinner
+                                    className="loading"
+                                    animation="border"
+                                />
+                            ) : (
+                                "Ingresar"
+                            )}
+                            {submitted && (
+                                <Redirect
+                                    push
+                                    to={{
+                                        pathname: "/",
+                                    }}
+                                />
+                            )}
+                        </button>
 
-                                <Link to="/register">Crear cuenta</Link>
+                        <Link to="/register">Crear cuenta</Link>
 
-                                {data.errorMessage && (
-                                    <div className="login-register-fail">
-                                        {data.errorMessage}
-                                    </div>
-                                )}
+                        {data.errorMessage && (
+                            <div className="login-register-fail">
+                                {data.errorMessage}
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </form>

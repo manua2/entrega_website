@@ -120,80 +120,70 @@ export const Login = () => {
 
     return (
         <div className="container">
-            <div className="outer">
-                <div className="middle">
-                    <div className="inner">
-                        <form onSubmit={handleFormSubmit}>
-                            <h1 className="titulo">Registrarse</h1>
+            <div className="center-div">
+                <form onSubmit={handleFormSubmit}>
+                    <h1>Registrarse</h1>
 
-                            <label htmlFor="name" className="input-label">
-                                Nombre
-                                <input
-                                    type="text"
-                                    value={data.name}
-                                    onChange={handleInputChange}
-                                    name="name"
-                                    id="name"
-                                    className="input-style"
-                                />
-                            </label>
+                    <label htmlFor="name" className="input-label">
+                        Nombre
+                        <input
+                            type="text"
+                            value={data.name}
+                            onChange={handleInputChange}
+                            name="name"
+                            id="name"
+                            className="input-style"
+                        />
+                    </label>
 
-                            <label htmlFor="email" className="input-label">
-                                Email
-                                <input
-                                    type="text"
-                                    value={data.email}
-                                    onChange={handleInputChange}
-                                    name="email"
-                                    id="email"
-                                    className="input-style"
-                                />
-                            </label>
+                    <label htmlFor="email" className="input-label">
+                        Email
+                        <input
+                            type="text"
+                            value={data.email}
+                            onChange={handleInputChange}
+                            name="email"
+                            id="email"
+                            className="input-style"
+                        />
+                    </label>
 
-                            <label htmlFor="password" className="input-label">
-                                Contraseña
-                                <input
-                                    type="password"
-                                    value={data.password}
-                                    onChange={handleInputChange}
-                                    name="password"
-                                    id="password"
-                                    className="input-style"
-                                />
-                            </label>
+                    <label htmlFor="password" className="input-label">
+                        Contraseña
+                        <input
+                            type="password"
+                            value={data.password}
+                            onChange={handleInputChange}
+                            name="password"
+                            id="password"
+                            className="input-style"
+                        />
+                    </label>
 
-                            <button
-                                disabled={data.isSubmitting}
-                                className="button"
-                            >
-                                {data.isSubmitting ? (
-                                    <Spinner
-                                        className="loading"
-                                        animation="border"
-                                    />
-                                ) : (
-                                    "Ingresar"
-                                )}
-                                {submitted && (
-                                    <Redirect
-                                        push
-                                        to={{
-                                            pathname: "/",
-                                        }}
-                                    />
-                                )}
-                            </button>
+                    <button disabled={data.isSubmitting} className="button">
+                        {data.isSubmitting ? (
+                            <Spinner className="loading" animation="border" />
+                        ) : (
+                            "Ingresar"
+                        )}
+                        {submitted && (
+                            <Redirect
+                                push
+                                to={{
+                                    pathname: "/",
+                                }}
+                            />
+                        )}
+                    </button>
 
-                            <Link to="/login">Iniciar sesion</Link>
+                    <Link to="/login">Iniciar sesion</Link>
 
-                            {data.errorMessage && (
-                                <div className="login-register-fail">
-                                    {data.errorMessage}
-                                </div>
-                            )}
-                        </form>
-                    </div>
-                </div>
+                    {data.errorMessage && (
+                        <div className="login-register-fail">
+                            {data.errorMessage}
+                        </div>
+                    )}
+                </form>
             </div>
         </div>
     );

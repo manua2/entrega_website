@@ -76,15 +76,14 @@ function App() {
                 dispatch,
             }}
         >
-            
             <main className="app">
                 {/* {!state.isAuthenticated ? <Login /> : <Home />} */}
                 <Router>
-                <Header />
+                    <Header />
                     <div className="App">
                         <Switch>
                             <Route path="/" exact>
-                                <Home />
+                                {!state.isAuthenticated ? <Login /> : <Home />}
                             </Route>
                             <Route path="/login" exact>
                                 <Login />

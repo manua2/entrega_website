@@ -9,7 +9,11 @@ export const Header = () => {
     return (
         <div>
             <nav className="navigation">
-                <h1>Piedra, papel o tijera</h1>
+                <h2>
+                    <Link className="titulo" to="/">
+                        Piedra, papel o tijera
+                    </Link>
+                </h2>
 
                 {state.isAuthenticated ? (
                     <button
@@ -23,8 +27,12 @@ export const Header = () => {
                     </button>
                 ) : (
                     <div>
-                        <Link className="login" to="/register">Crear cuenta</Link>
-                        <Link className="login" to="/login">Iniciar sesion</Link>
+                        <Link className="login" to="/register">
+                            Crear cuenta
+                        </Link>
+                        <Link className="login" to="/login">
+                            Iniciar sesion
+                        </Link>
                     </div>
                 )}
             </nav>
