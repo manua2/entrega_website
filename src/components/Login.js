@@ -34,40 +34,42 @@ export const Login = () => {
             errorMessage: null,
         });
 
-        fetch(
-            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/login`,
-            {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: data.email,
-                    password: data.password,
-                }),
-            }
-        )
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
+            fetch(
+                `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/login`,
+                {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: data.email,
+                        password: data.password,
+                    }),
                 }
+            )
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    }
 
-                throw response;
-            })
-            .then((data) => {
-                dispatch({
-                    type: "LOGIN",
-                    payload: data,
+                    throw response;
+                })
+                .then((data) => {
+                    dispatch({
+                        type: "LOGIN",
+                        payload: data,
+                    });
+                })
+                .catch((error) => {
+                    setData({
+                        ...data,
+                        isSubmitting: false,
+                        errorMessage: "Credenciales invalidas",
+                    });
                 });
-            })
-            .catch((error) => {
-                setData({
-                    ...data,
-                    isSubmitting: false,
-                    errorMessage: "Credenciales invalidas",
-                });
-            });
+        if (data.errorMessage === '') {
             setSubmitted(true);
+        }
     };
 
     return (
