@@ -8,7 +8,7 @@ import { Redirect } from "react-router";
 
 export const Login = () => {
     const { dispatch } = React.useContext(AuthContext);
-    const [submitted, setSubmitted] = React.useState(false);
+    // const [submitted, setSubmitted] = React.useState(false);
 
     const initialState = {
         name: "",
@@ -16,6 +16,7 @@ export const Login = () => {
         password: "",
         isSubmitting: false,
         errorMessage: null,
+        submitted: false,
     };
 
     const [data, setData] = React.useState(initialState);
@@ -27,7 +28,7 @@ export const Login = () => {
         });
     };
 
-    const handleFormSubmit = (event) => {
+    const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         setData({
@@ -74,7 +75,7 @@ export const Login = () => {
                 errorMessage: message,
             });
         } else {
-            fetch(
+            await fetch(
                 `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/register`,
                 {
                     method: "post",
@@ -100,21 +101,25 @@ export const Login = () => {
                         type: "REGISTER",
                         payload: data,
                     });
+                    setData({
+                        ...data,
+                        submitted: true,
+                    })
                 })
                 .catch((error) => {
-                    let message;
+                    var message;
                     if (error.status === 500) {
                         message = "Email ya registrado";
-                    } else {
+                    } else if (error.status === 400) {
                         message = "Error al registrarse";
                     }
                     setData({
                         ...data,
                         isSubmitting: false,
                         errorMessage: message,
-                    });
+                        submitted: false,
+                    })
                 });
-            setSubmitted(true);
         }
     };
 
@@ -166,7 +171,7 @@ export const Login = () => {
                         ) : (
                             "Ingresar"
                         )}
-                        {submitted && (
+                        {data.submitted && (
                             <Redirect
                                 push
                                 to={{
