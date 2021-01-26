@@ -8,7 +8,6 @@ import { Redirect } from "react-router";
 
 export const Login = () => {
     const { dispatch } = React.useContext(AuthContext);
-    // const [submitted, setSubmitted] = React.useState(false);
 
     const initialState = {
         name: "",
@@ -28,7 +27,7 @@ export const Login = () => {
         });
     };
 
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = (event) => {
         event.preventDefault();
 
         setData({
@@ -75,7 +74,7 @@ export const Login = () => {
                 errorMessage: message,
             });
         } else {
-            await fetch(
+            fetch(
                 `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/register`,
                 {
                     method: "post",
@@ -104,7 +103,7 @@ export const Login = () => {
                     setData({
                         ...data,
                         submitted: true,
-                    })
+                    });
                 })
                 .catch((error) => {
                     var message;
@@ -118,7 +117,7 @@ export const Login = () => {
                         isSubmitting: false,
                         errorMessage: message,
                         submitted: false,
-                    })
+                    });
                 });
         }
     };
@@ -169,7 +168,7 @@ export const Login = () => {
                         {data.isSubmitting ? (
                             <Spinner className="loading" animation="border" />
                         ) : (
-                            "Ingresar"
+                            "Registrarse"
                         )}
                         {data.submitted && (
                             <Redirect

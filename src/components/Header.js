@@ -16,15 +16,18 @@ export const Header = () => {
                 </h2>
 
                 {state.isAuthenticated ? (
-                    <button
-                        onClick={() =>
-                            dispatch({
-                                type: "LOGOUT",
-                            })
-                        }
-                    >
-                        Cerrar sesión
-                    </button>
+                    <div>
+                        <p className="greet">Hola {state.user.name}!</p>
+                        <button
+                            onClick={() =>
+                                dispatch({
+                                    type: "LOGOUT",
+                                })
+                            }
+                        >
+                            Cerrar sesión
+                        </button>
+                    </div>
                 ) : (
                     <div>
                         <Link className="login" to="/register">

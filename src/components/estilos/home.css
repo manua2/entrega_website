@@ -1,5 +1,5 @@
-.button {
-    background-color: #007bff;
+.button-match {
+    background-color: #0062cc;
     border: 3px solid #0062cc;
     color: white;
     width: 100%;
@@ -12,12 +12,12 @@
     border-radius: 0px;
 }
 
-.button:hover {
+.button-match:hover {
     background-color: #0062cc;
     transition: background-color ease .3s;
 }
 
-.button:focus {
+.button-match:focus {
     outline: none;
 }
 

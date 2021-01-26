@@ -54,3 +54,8 @@
     text-decoration: none;
     color: white;
 }
+
+.greet {
+    margin-bottom: 0;
+    color: white;
+}

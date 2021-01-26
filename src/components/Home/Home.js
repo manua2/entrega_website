@@ -15,14 +15,12 @@ export const Home = () => {
         setCreateMatchModalVisibility(!isCreateMatchModalVisible);
     };
 
-    console.log(authState)
-
     return (
         <div>
             {authState.isAuthenticated && (
                 <>
                     <button
-                        className="button"
+                        className="button-match"
                         onClick={toggleCreateMatch}
                     >
                         Crear partida
