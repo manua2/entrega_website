@@ -24,10 +24,6 @@ const CreateMatch = (props) => {
         }
     }
 
-    // const submitDefault = (e) => {
-    //     e.preventDefault();
-    // }
-
     const onSubmit = (event) => {
         event.preventDefault();
         dispatch({
@@ -37,6 +33,7 @@ const CreateMatch = (props) => {
         const match = {
             player,
             opponent,
+            finishedMatch: false,
         };
 
         const email = document.getElementById("opponent").value;
