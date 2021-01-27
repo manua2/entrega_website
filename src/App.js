@@ -15,7 +15,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-    console.log(state, action);
     switch (action.type) {
         case "LOGIN":
             localStorage.setItem("user", JSON.stringify(action.payload.user));
@@ -30,7 +29,7 @@ const reducer = (state, action) => {
         case "REGISTER":
             localStorage.setItem("user", JSON.stringify(action.payload.user));
             localStorage.setItem("token", action.payload.user.token);
-            console.log(state, action);
+
             return {
                 ...state,
                 isAuthenticated: true,
@@ -77,7 +76,6 @@ function App() {
             }}
         >
             <main className="app">
-                {/* {!state.isAuthenticated ? <Login /> : <Home />} */}
                 <Router>
                     <Header />
                     <div className="App">

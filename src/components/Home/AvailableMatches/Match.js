@@ -5,8 +5,6 @@ import "../../estilos/matches.css"
 export const Match = ({ match }) => {
     const { state: authState } = React.useContext(AuthContext);
 
-    console.log(authState)
-
     var emailDeOponente;
     if (match.opponent === authState.user.email) {
         emailDeOponente = match.player

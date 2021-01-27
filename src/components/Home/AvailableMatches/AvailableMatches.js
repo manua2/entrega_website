@@ -50,10 +50,9 @@ export const Home = () => {
                 }
             })
             .then((data) => {
-                console.log(data.matches)
                 dispatch({
                     type: "FETCH_MATCHES_SUCCESS",
-                    payload: data
+                    payload: data,
                 });
             })
             .catch((error) => {
@@ -63,15 +62,11 @@ export const Home = () => {
             });
     }, [authState.token]);
 
-    console.log(state)
-
     return (
         <React.Fragment>
             <div>
                 {state.isFetching ? (
                     <span className="loader">Cargando...</span>
-                ) : state.hasError ? (
-                    <span className="error">Ocurrió un error</span>
                 ) : (
                     <>
                         {state.matches.length > 0 &&
@@ -84,6 +79,5 @@ export const Home = () => {
         </React.Fragment>
     );
 };
-
 
 export default Home;
