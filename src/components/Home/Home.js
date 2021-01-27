@@ -2,6 +2,7 @@ import "../estilos/home.css";
 import React from "react";
 import CreateMatch from "../CreateMatch";
 import { AuthContext } from "../../App";
+import AvailableMatches from "./AvailableMatches/AvailableMatches"
 
 export const Home = () => {
     const [
@@ -31,7 +32,7 @@ export const Home = () => {
                     />
                 </>
             )}
-
+            <AvailableMatches></AvailableMatches>
             <p className="test">hola</p>
         </div>
     );

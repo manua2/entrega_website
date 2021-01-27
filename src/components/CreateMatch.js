@@ -24,6 +24,10 @@ const CreateMatch = (props) => {
         }
     }
 
+    function refreshPage() {
+        window.location.reload(false);
+      }
+
     const onSubmit = (event) => {
         event.preventDefault();
         dispatch({
@@ -33,11 +37,10 @@ const CreateMatch = (props) => {
         const match = {
             player,
             opponent,
-            finishedMatch: false,
+            finishedMatch: "false",
         };
 
         const email = document.getElementById("opponent").value;
-        console.log(email)
         var invalidEmail;
         if (!testEmail(email)) {
             invalidEmail = true;
@@ -71,6 +74,7 @@ const CreateMatch = (props) => {
                     payload: data.match,
                 });
 
+                refreshPage();
                 onClose();
             })
             .catch((error) => {
