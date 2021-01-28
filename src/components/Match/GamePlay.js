@@ -5,15 +5,14 @@ import "../estilos/input-styles.css";
 const GamePlay = (props) => {
     const { state: authState } = React.useContext(AuthContext);
     const { dispatch } = React.useContext(AuthContext);
-    const [move, setMove] = React.useState("");
 
     const moveRequest = {
         match_id: props.match._id,
-        move,
+        move: ""
     };
 
     const onClick = (move) => {
-        setMove(move)
+        moveRequest.move = move
 
         dispatch({
             type: "MOVE",
