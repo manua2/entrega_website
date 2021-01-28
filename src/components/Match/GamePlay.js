@@ -7,9 +7,13 @@ const GamePlay = (props) => {
     const { dispatch } = React.useContext(AuthContext);
 
     const moveRequest = {
-        match_id: props.match._id,
+        match: props.match,
         move: ""
     };
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
 
     const onClick = (move) => {
         moveRequest.move = move
@@ -40,6 +44,7 @@ const GamePlay = (props) => {
                 dispatch({
                     type: "MOVE_DISPATCHED",
                 });
+                refreshPage();
                 console.log(move);
             })
             .catch((error) => {
@@ -51,7 +56,7 @@ const GamePlay = (props) => {
 
     return (
         <div>
-            <button onClick={() => onClick('pierda')}>pierda</button>
+            <button onClick={() => onClick('piedra')}>pierda</button>
             <button onClick={() => onClick('papel')}>papel</button>
             <button onClick={() => onClick('tijera')}>tijera</button>
             <p>fd</p>

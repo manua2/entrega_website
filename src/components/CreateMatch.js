@@ -15,18 +15,20 @@ const CreateMatch = (props) => {
     };
 
     function testEmail(x) {
-        if (/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-            x
-        )) {
-            return true
+        if (
+            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                x
+            )
+        ) {
+            return true;
         } else {
-            return false
+            return false;
         }
     }
 
     function refreshPage() {
         window.location.reload(false);
-      }
+    }
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -38,14 +40,12 @@ const CreateMatch = (props) => {
             player,
             opponent,
             finishedMatch: "false",
-            moves: {
-                move_1_1: "",
-                move_1_2: "",
-                move_2_1: "",
-                move_2_2: "",
-                move_3_1: "",
-                move_3_2: "",
-            }
+            move_1_1: " ",
+            move_1_2: " ",
+            move_2_1: " ",
+            move_2_2: " ",
+            move_3_1: " ",
+            move_3_2: " ",
         };
 
         const email = document.getElementById("opponent").value;
@@ -91,7 +91,7 @@ const CreateMatch = (props) => {
                 if (invalidEmail === true) {
                     setErrorMessage("Email invalido");
                 } else if (error.status === 403) {
-                    setErrorMessage("Ese es tu email")
+                    setErrorMessage("Ese es tu email");
                 } else {
                     setErrorMessage("Ese email no esta registrado");
                 }
