@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Header from "./components/Header";
 import "./app.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Match from "./components/Match/Match";
 
 export const AuthContext = React.createContext();
 
@@ -88,6 +89,9 @@ function App() {
                             </Route>
                             <Route path="/register" exact>
                                 <Register />
+                            </Route>
+                            <Route path="/match/:id">
+                                {!state.isAuthenticated ? <Login /> : <Match />}
                             </Route>
                         </Switch>
                     </div>

@@ -32,7 +32,7 @@ export const Home = () => {
                     />
                 </>
             )}
-            <AvailableMatches></AvailableMatches>
+            <AvailableMatches />
             <p className="test">hola</p>
         </div>
     );

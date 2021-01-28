@@ -1,9 +1,12 @@
 import React from "react";
-import { AuthContext } from "../../../App";
-import MatchCard from "./MatchCard";
+import { AuthContext } from "../../App";
+import { useParams } from "react-router-dom";
+import "../estilos/matches.css";
+import "../estilos/input-styles.css";
+import GamePlay from "./GamePlay"
 
 const initialState = {
-    matches: [],
+    match: [],
     isFetching: false,
 };
 
@@ -18,7 +21,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isFetching: false,
-                matches: action.payload.matches,
+                match: action.payload.match,
             };
         case "FETCH_MATCHES_FAILURE":
             return {
@@ -30,9 +33,10 @@ const reducer = (state, action) => {
     }
 };
 
-export const Home = () => {
+export const Match = () => {
     const { state: authState } = React.useContext(AuthContext);
     const [state, dispatch] = React.useReducer(reducer, initialState);
+    var { id } = useParams();
 
     React.useEffect(() => {
         dispatch({
@@ -40,7 +44,7 @@ export const Home = () => {
         });
 
         fetch(
-            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/availableMatches`
+            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/match/${id}`
         )
             .then((response) => {
                 if (response.ok) {
@@ -60,19 +64,44 @@ export const Home = () => {
                     type: "FETCH_MATCHES_FAILURE",
                 });
             });
+        // eslint-disable-next-line
     }, [authState.token]);
+
+    var emailDeOponente;
+    if (state.match.opponent === authState.user.email) {
+        emailDeOponente = state.match.player;
+    } else {
+        emailDeOponente = state.match.opponent;
+    }
+
+    var usuarioNoEnLaPartida;
+    if (
+        state.match.player !== authState.user.email &&
+        state.match.opponent !== authState.user.email
+    ) {
+        usuarioNoEnLaPartida = true;
+    } else {
+        usuarioNoEnLaPartida = false;
+    }
 
     return (
         <React.Fragment>
             <div>
                 {state.isFetching ? (
-                    <span className="loader">Cargando...</span>
+                    <span className="center-div">Cargando...</span>
+                ) : usuarioNoEnLaPartida ? (
+                    <span className="error">Ocurrió un error</span>
                 ) : (
                     <>
-                        {state.matches.length > 0 &&
-                            state.matches.map((match) => (
-                                <MatchCard key={match._id} match={match} />
-                            ))}
+                        <div className="match-info">
+                            <p className="p-sin-margen-600">
+                                Jugador: {authState.user.email}
+                            </p>
+                            <p className="p-sin-margen-600">
+                                Oponente: {emailDeOponente}
+                            </p>
+                        </div>
+                        <GamePlay match={state.match} />
                     </>
                 )}
             </div>
@@ -80,4 +109,4 @@ export const Home = () => {
     );
 };
 
-export default Home;
+export default Match;

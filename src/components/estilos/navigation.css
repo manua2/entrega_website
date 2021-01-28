@@ -50,6 +50,10 @@
     font-size: 20px;
 }
 
+div > nav > h2 {
+    line-height: 0.7;
+}
+
 .titulo:hover {
     text-decoration: none;
     color: white;

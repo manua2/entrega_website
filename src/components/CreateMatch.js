@@ -38,6 +38,14 @@ const CreateMatch = (props) => {
             player,
             opponent,
             finishedMatch: "false",
+            moves: {
+                move_1_1: "",
+                move_1_2: "",
+                move_2_1: "",
+                move_2_2: "",
+                move_3_1: "",
+                move_3_2: "",
+            }
         };
 
         const email = document.getElementById("opponent").value;
@@ -49,7 +57,7 @@ const CreateMatch = (props) => {
         }
 
         fetch(
-            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/match`,
+            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/createMatch`,
             {
                 method: "post",
                 headers: {
@@ -67,11 +75,10 @@ const CreateMatch = (props) => {
                 }
             })
             .then((data) => {
-                setOpponent("");
+                // setOpponent("");
 
                 dispatch({
                     type: "MATCH_CREATED",
-                    payload: data.match,
                 });
 
                 refreshPage();
