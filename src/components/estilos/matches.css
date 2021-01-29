@@ -37,12 +37,24 @@
     border: 2px solid #0062cc;
     display: flex;
     justify-content: center;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.boton-jugar:hover {
+    text-decoration: none;
+    color: black;
+    background-color: #0062cc;
 }
 
 @media (max-width: 550px) {
     .content {
         display: contents;
+    }
+    .card-padding {
+        padding: 10px;
+    }
+    .boton-mobile {
+        margin-top: 10px;
     }
 }

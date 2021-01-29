@@ -15,10 +15,16 @@ export const Match = ({ match }) => {
 
     return (
         <div className="card">
-            <div className="content">
-                <p className="match-text">Match ID: {match._id}</p>
-                <span className="match-text">Oponente: {emailDeOponente}</span>
-                <Link className="boton-jugar" to={`/match/${match._id}`}><p className="p-sin-margen-600">Jugar</p></Link>
+            <div className= "card-padding">
+                <div className="content">
+                    <p className="match-text">Match ID: {match._id}</p>
+                    <span className="match-text">
+                        Oponente: {emailDeOponente}
+                    </span>
+                    <Link className="boton-jugar boton-mobile" to={`/match/${match._id}`}>
+                        <p className="p-sin-margen-600">Jugar</p>
+                    </Link>
+                </div>
             </div>
         </div>
     );

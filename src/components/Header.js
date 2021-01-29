@@ -16,7 +16,7 @@ export const Header = () => {
                 </h2>
 
                 {state.isAuthenticated ? (
-                    <div>
+                    <div className="height-100">
                         <p className="greet">Hola {state.user.name}!</p>
                         <button
                             onClick={() =>
@@ -29,12 +29,16 @@ export const Header = () => {
                         </button>
                     </div>
                 ) : (
-                    <div>
+                    <div className="height-100">
                         <Link className="login" to="/register">
-                            Crear cuenta
+                            <button className="header-button">
+                                Crear cuenta
+                            </button>
                         </Link>
                         <Link className="login" to="/login">
-                            Iniciar sesion
+                            <button className="header-button">
+                                Iniciar sesion
+                            </button>
                         </Link>
                     </div>
                 )}
