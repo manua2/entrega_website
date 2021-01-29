@@ -33,6 +33,7 @@ const reducer = (state, action) => {
 export const Home = () => {
     const { state: authState } = React.useContext(AuthContext);
     const [state, dispatch] = React.useReducer(reducer, initialState);
+    const user = authState.user.email;
 
     React.useEffect(() => {
         dispatch({
@@ -40,7 +41,14 @@ export const Home = () => {
         });
 
         fetch(
-            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/availableMatches`
+            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/availableMatches`,
+            {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ user }),
+            }
         )
             .then((response) => {
                 if (response.ok) {
@@ -60,6 +68,7 @@ export const Home = () => {
                     type: "FETCH_MATCHES_FAILURE",
                 });
             });
+        // eslint-disable-next-line
     }, [authState.token]);
 
     return (
