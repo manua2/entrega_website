@@ -47,6 +47,22 @@
     background-color: #0062cc;
 }
 
+.error {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-weight: 700;
+    font-size: xx-large;
+}
+
+.cargando {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-weight: 700;
+    font-size: xx-large;
+}
+
 @media (max-width: 550px) {
     .content {
         display: contents;

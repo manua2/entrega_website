@@ -91,9 +91,13 @@ export const Match = () => {
             <div>
                 {matchExists ? (
                     state.isFetching ? (
-                        <span className="center-div">Cargando...</span>
+                        <div className="center-div">
+                            <span className="cargando">Cargando...</span>
+                        </div>
                     ) : usuarioNoEnLaPartida ? (
-                        <span className="error">Ocurrió un error</span>
+                        <div className="center-div">
+                            <span className="error">Ocurrió un error</span>
+                        </div>
                     ) : (
                         <>
                             <div className="match-info">
