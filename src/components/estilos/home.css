@@ -24,3 +24,15 @@
 .test {
     margin-top: 1200px;
 }
+
+.seccion {
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.titulo-seccion {
+    font-size: x-large;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

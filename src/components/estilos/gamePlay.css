@@ -19,6 +19,7 @@
 .pares-de-jugadas {
     background-color: #fbfbfb;
     padding: 10px;
+    font-size: larger;
 }
 
 .ganador {
@@ -56,4 +57,25 @@
     margin-top: 30px;
     font-weight: 600;
     font-size: x-large;
+}
+
+.resultado-final {
+    margin-top: 50px;
+    font-size: xx-large;
+}
+
+.match-info-second {
+    display: contents;
+}
+
+@media (max-width: 991px) {
+    .match-info-second {
+        display: block;
+    }
+}
+
+@media (max-width: 991px) {
+    .resultado-final {
+        display: grid;
+    }
 }

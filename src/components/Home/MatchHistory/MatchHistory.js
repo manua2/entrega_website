@@ -30,15 +30,15 @@ const reducer = (state, action) => {
     }
 };
 
-const AvailableMatches = () => {
+const MatchHistory = () => {
     const { state: authState } = React.useContext(AuthContext);
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const user = authState.user.email;
 
     const getMatchesReq = {
         user: user,
-        finishedMatch: "false"
-    }
+        finishedMatch: "true",
+    };
 
     React.useEffect(() => {
         dispatch({
@@ -94,4 +94,4 @@ const AvailableMatches = () => {
     );
 };
 
-export default AvailableMatches;
+export default MatchHistory;

@@ -27,6 +27,7 @@
 .p-sin-margen-600 {
     margin-bottom: 0;
     font-weight: 600;
+    margin: auto;
 }
 
 .boton-jugar {
@@ -63,7 +64,26 @@
     font-size: xx-large;
 }
 
-@media (max-width: 550px) {
+@media (min-width: 576px) and (max-width: 991px) {
+    .boton-ver-partida {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: auto;
+        margin-bottom: auto;
+        height: 48px;
+        width: 134.5px;
+    }
+}
+
+@media (min-width: 576px) {
+    .boton-ver-partida {
+        width: 134.5px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 575px) {
     .content {
         display: contents;
     }

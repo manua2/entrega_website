@@ -2,14 +2,15 @@ import "../estilos/home.css";
 import React from "react";
 import CreateMatch from "../CreateMatch";
 import { AuthContext } from "../../App";
-import AvailableMatches from "./AvailableMatches/AvailableMatches"
+import AvailableMatches from "./AvailableMatches/AvailableMatches";
+import MatchHistory from "./MatchHistory/MatchHistory";
 
 export const Home = () => {
     const [
         isCreateMatchModalVisible,
         setCreateMatchModalVisibility,
     ] = React.useState(false);
-    
+
     const { state: authState } = React.useContext(AuthContext);
 
     const toggleCreateMatch = () => {
@@ -32,7 +33,14 @@ export const Home = () => {
                     />
                 </>
             )}
-            <AvailableMatches />
+            <div className='seccion'>
+                <div className='titulo-seccion'>Paridas disponibles:</div>
+                <AvailableMatches />
+            </div>
+            <div className='seccion'>
+                <div className='titulo-seccion'>Historial de partidas:</div>
+                <MatchHistory />
+            </div>
             <p className="test">hola</p>
         </div>
     );

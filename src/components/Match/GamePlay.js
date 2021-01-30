@@ -380,7 +380,7 @@ const GamePlay = (props) => {
                         </div>
                     )}
                     {partidaTerminada && (
-                        <div className="resultado">
+                        <div className="resultado resultado-final">
                             <div className="ganador">
                                 Ganador de la partida:
                             </div>
