@@ -46,6 +46,7 @@ const CreateMatch = (props) => {
             move_2_2: " ",
             move_3_1: " ",
             move_3_2: " ",
+            winner: " ",
         };
 
         const email = document.getElementById("opponent").value;

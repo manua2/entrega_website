@@ -3,7 +3,8 @@ import { AuthContext } from "../../App";
 import { useParams } from "react-router-dom";
 import "../estilos/matches.css";
 import "../estilos/input-styles.css";
-import GamePlay from "./GamePlay"
+import GamePlay from "./GamePlay";
+import { Redirect } from "react-router";
 
 const initialState = {
     match: [],
@@ -67,42 +68,52 @@ export const Match = () => {
         // eslint-disable-next-line
     }, [authState.token]);
 
-    var emailDeOponente;
-    if (state.match.opponent === authState.user.email) {
-        emailDeOponente = state.match.player;
+    var matchExists;
+    if (state.match === null) {
+        matchExists = false;
     } else {
-        emailDeOponente = state.match.opponent;
+        matchExists = true;
+        var usuarioNoEnLaPartida;
+        if (
+            state.match.player !== authState.user.email &&
+            state.match.opponent !== authState.user.email
+        ) {
+            usuarioNoEnLaPartida = true;
+        } else {
+            usuarioNoEnLaPartida = false;
+        }
     }
 
-    var usuarioNoEnLaPartida;
-    if (
-        state.match.player !== authState.user.email &&
-        state.match.opponent !== authState.user.email
-    ) {
-        usuarioNoEnLaPartida = true;
-    } else {
-        usuarioNoEnLaPartida = false;
-    }
+    console.log(matchExists)
 
     return (
         <React.Fragment>
             <div>
-                {state.isFetching ? (
-                    <span className="center-div">Cargando...</span>
-                ) : usuarioNoEnLaPartida ? (
-                    <span className="error">Ocurrió un error</span>
+                {matchExists ? (
+                    state.isFetching ? (
+                        <span className="center-div">Cargando...</span>
+                    ) : usuarioNoEnLaPartida ? (
+                        <span className="error">Ocurrió un error</span>
+                    ) : (
+                        <>
+                            <div className="match-info">
+                                <p className="p-sin-margen-600">
+                                    Creador de la partida: {state.match.player}
+                                </p>
+                                <p className="p-sin-margen-600">
+                                    Oponente: {state.match.opponent}
+                                </p>
+                            </div>
+                            <GamePlay match={state.match} />
+                        </>
+                    )
                 ) : (
-                    <>
-                        <div className="match-info">
-                            <p className="p-sin-margen-600">
-                                Jugador: {authState.user.email}
-                            </p>
-                            <p className="p-sin-margen-600">
-                                Oponente: {emailDeOponente}
-                            </p>
-                        </div>
-                        <GamePlay match={state.match} />
-                    </>
+                    <Redirect
+                        push
+                        to={{
+                            pathname: "/",
+                        }}
+                    />
                 )}
             </div>
         </React.Fragment>

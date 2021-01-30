@@ -13,6 +13,8 @@ export const Match = ({ match }) => {
         emailDeOponente = match.opponent;
     }
 
+    console.log(match)
+
     return (
         <div className="card">
             <div className= "card-padding">
