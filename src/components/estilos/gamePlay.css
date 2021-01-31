@@ -64,16 +64,6 @@
     font-size: xx-large;
 }
 
-.match-info-second {
-    display: contents;
-}
-
-@media (max-width: 991px) {
-    .match-info-second {
-        display: block;
-    }
-}
-
 @media (max-width: 991px) {
     .resultado-final {
         display: grid;

@@ -41,7 +41,6 @@ export const Home = () => {
                 <div className='titulo-seccion'>Historial de partidas:</div>
                 <MatchHistory />
             </div>
-            <p className="test">hola</p>
         </div>
     );
 };

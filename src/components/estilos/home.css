@@ -21,10 +21,6 @@
     outline: none;
 }
 
-.test {
-    margin-top: 1200px;
-}
-
 .seccion {
     margin-bottom: 50px;
     margin-top: 20px;
@@ -35,4 +31,32 @@
     font-weight: 700;
     margin-left: 10px;
     margin-bottom: 10px;
+}
+
+@media (max-width: 1920px) {
+    .titulo-seccion {
+        margin-left: 410px;
+        margin-right: 410px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .titulo-seccion {
+        margin-left: 210px;
+        margin-right: 210px;
+    }
+}
+
+@media (max-width: 992px) {
+    .titulo-seccion {
+        margin-left: 110px;
+        margin-right: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo-seccion {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

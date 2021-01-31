@@ -1,6 +1,5 @@
 .content {
     display: flex;
-    justify-content: space-around;
     padding: 10px;
 }
 
@@ -64,7 +63,7 @@
     font-size: xx-large;
 }
 
-@media (min-width: 576px) and (max-width: 991px) {
+@media (min-width: 576px) {
     .boton-ver-partida {
         padding-left: 20px;
         padding-right: 20px;
@@ -72,6 +71,14 @@
         margin-bottom: auto;
         height: 48px;
         width: 134.5px;
+        top: 0;
+        bottom: 0;
+    }
+
+    .boton-jugar {
+        position: absolute;
+        right: 10px;
+        height: 48px;
     }
 }
 
@@ -80,6 +87,39 @@
         width: 134.5px;
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .boton-jugar {
+        max-height: 48px;
+        max-width: 134.5px;
+    }
+}
+
+@media (max-width: 1920px) {
+    .card {
+        margin-left: 400px;
+        margin-right: 400px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .card {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin-left: 5px;
+        margin-right: 5px;
     }
 }
 

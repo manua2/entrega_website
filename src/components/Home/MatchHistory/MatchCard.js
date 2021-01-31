@@ -25,12 +25,14 @@ export const MatchCard = ({ match }) => {
                         </span>
                         <p className="match-text">Ganador: {match.winner}</p>
                     </div>
-                    <Link
-                        className="boton-jugar boton-mobile boton-ver-partida"
-                        to={`/match/${match._id}`}
-                    >
-                        <p className="p-sin-margen-600">Ver partida</p>
-                    </Link>
+                    <div>
+                        <Link
+                            className="boton-jugar boton-mobile boton-ver-partida"
+                            to={`/match/${match._id}`}
+                        >
+                            <p className="p-sin-margen-600">Ver partida</p>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
