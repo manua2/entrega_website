@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthContext } from "../../../App";
 import MatchCard from "./MatchCard";
+import "../../estilos/home.css";
 
 const initialState = {
     matches: [],
@@ -83,10 +84,16 @@ const MatchHistory = () => {
                     <span className="loader">Cargando...</span>
                 ) : (
                     <>
-                        {state.matches.length > 0 &&
-                            state.matches.map((match) => (
-                                <MatchCard key={match._id} match={match} />
-                            ))}
+                        {state.matches.length > 0 && (
+                            <div className="seccion">
+                                <div className="titulo-seccion">
+                                    Historial de partidas:
+                                </div>
+                                {state.matches.map((match) => (
+                                    <MatchCard key={match._id} match={match} />
+                                ))}
+                            </div>
+                        )}
                     </>
                 )}
             </div>

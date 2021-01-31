@@ -33,6 +33,12 @@
     margin-bottom: 10px;
 }
 
+.no-hay-partidas-mensaje {
+    font-size: larger;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
 @media (max-width: 1920px) {
     .titulo-seccion {
         margin-left: 410px;

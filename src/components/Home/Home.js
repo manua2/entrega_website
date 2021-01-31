@@ -33,14 +33,8 @@ export const Home = () => {
                     />
                 </>
             )}
-            <div className='seccion'>
-                <div className='titulo-seccion'>Paridas disponibles:</div>
-                <AvailableMatches />
-            </div>
-            <div className='seccion'>
-                <div className='titulo-seccion'>Historial de partidas:</div>
-                <MatchHistory />
-            </div>
+            <AvailableMatches />
+            <MatchHistory />
         </div>
     );
 };

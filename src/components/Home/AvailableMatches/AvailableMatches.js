@@ -1,6 +1,9 @@
 import React from "react";
 import { AuthContext } from "../../../App";
 import MatchCard from "./MatchCard";
+import "../../estilos/home.css";
+
+export const AvailableMatchesContext = React.createContext();
 
 const initialState = {
     matches: [],
@@ -37,8 +40,8 @@ const AvailableMatches = () => {
 
     const getMatchesReq = {
         user: user,
-        finishedMatch: "false"
-    }
+        finishedMatch: "false",
+    };
 
     React.useEffect(() => {
         dispatch({
@@ -76,6 +79,8 @@ const AvailableMatches = () => {
         // eslint-disable-next-line
     }, [authState.token]);
 
+    console.log(state.matches);
+
     return (
         <React.Fragment>
             <div>
@@ -83,10 +88,21 @@ const AvailableMatches = () => {
                     <span className="loader">Cargando...</span>
                 ) : (
                     <>
-                        {state.matches.length > 0 &&
-                            state.matches.map((match) => (
-                                <MatchCard key={match._id} match={match} />
-                            ))}
+                        {state.matches.length > 0 ? (
+                            <div className="seccion">
+                                <div className="titulo-seccion">
+                                    Paridas disponibles:
+                                </div>
+                                {state.matches.map((match) => (
+                                    <MatchCard key={match._id} match={match} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="titulo-seccion no-hay-partidas-mensaje">
+                                <div>No hay partidas disponibles</div>
+                                <div>Pueden ser creadas con el boton "Crear partida"</div>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
