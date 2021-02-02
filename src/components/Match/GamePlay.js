@@ -2,6 +2,7 @@ import React from "react";
 import { AuthContext } from "../../App";
 import "../estilos/input-styles.css";
 import "../estilos/gamePlay.css";
+import apiUrlVariable from "../apiUrlVariable";
 
 const GamePlay = (props) => {
     const { state: authState } = React.useContext(AuthContext);
@@ -23,18 +24,14 @@ const GamePlay = (props) => {
             type: "MOVE",
         });
 
-        fetch(
-            `https://entregafinalpptapi.herokuapp.com/playMatch`,
-            // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/playMatch`,
-            {
-                method: "post",
-                headers: {
-                    Authorization: authState.token,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(moveRequest),
-            }
-        )
+        fetch(`${apiUrlVariable}/playMatch`, {
+            method: "post",
+            headers: {
+                Authorization: authState.token,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(moveRequest),
+        })
             .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -69,8 +66,7 @@ const GamePlay = (props) => {
         });
 
         fetch(
-            `https://entregafinalpptapi.herokuapp.com/playMatch`,
-            // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/playMatch`,
+            `${apiUrlVariable}/playMatch`,
             {
                 method: "post",
                 headers: {

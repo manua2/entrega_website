@@ -5,6 +5,7 @@ import "./estilos/input-styles.css";
 import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Redirect } from "react-router";
+import apiUrlVariable from "./apiUrlVariable";
 
 export const Login = () => {
     const { dispatch } = React.useContext(AuthContext);
@@ -74,21 +75,17 @@ export const Login = () => {
                 errorMessage: message,
             });
         } else {
-            fetch(
-                `https://entregafinalpptapi.herokuapp.com/register`,
-                // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/register`,
-                {
-                    method: "post",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        name: data.name,
-                        email: data.email,
-                        password: data.password,
-                    }),
-                }
-            )
+            fetch(`${apiUrlVariable}/register`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email,
+                    password: data.password,
+                }),
+            })
                 .then((response) => {
                     if (response.ok) {
                         return response.json();

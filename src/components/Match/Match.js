@@ -5,6 +5,7 @@ import "../estilos/matches.css";
 import "../estilos/input-styles.css";
 import GamePlay from "./GamePlay";
 import { Redirect } from "react-router";
+import apiUrlVariable from "../apiUrlVariable";
 
 const initialState = {
     match: [],
@@ -44,10 +45,7 @@ export const Match = () => {
             type: "FETCH_MATCHES_REQUEST",
         });
 
-        fetch(
-            `https://entregafinalpptapi.herokuapp.com/match/${id}`
-            // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/match/${id}`,
-        )
+        fetch(`${apiUrlVariable}/match/${id}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();

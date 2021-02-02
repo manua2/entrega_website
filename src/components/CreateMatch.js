@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthContext } from "../App";
 import "./estilos/input-styles.css";
+import apiUrlVariable from "./apiUrlVariable";
 
 const CreateMatch = (props) => {
     const { state: authState } = React.useContext(AuthContext);
@@ -58,8 +59,7 @@ const CreateMatch = (props) => {
         }
 
         fetch(
-            `https://entregafinalpptapi.herokuapp.com/createMatch`,
-            // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/createMatch`,
+            `${apiUrlVariable}/createMatch`,
             {
                 method: "post",
                 headers: {

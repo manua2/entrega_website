@@ -3,6 +3,7 @@ import { AuthContext } from "../../../App";
 import MatchCard from "./MatchCard";
 import "../../estilos/home.css";
 import "../../estilos/input-styles.css";
+import apiUrlVariable from "../../apiUrlVariable";
 
 const initialState = {
     matches: [],
@@ -48,8 +49,7 @@ const MatchHistory = () => {
         });
 
         fetch(
-            `https://entregafinalpptapi.herokuapp.com/getMatches`,
-            // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/getMatches`,
+            `${apiUrlVariable}/getMatches`,
             {
                 method: "post",
                 headers: {

@@ -3,6 +3,7 @@ import { AuthContext } from "../../../App";
 import MatchCard from "./MatchCard";
 import "../../estilos/home.css";
 import "../../estilos/input-styles.css";
+import apiUrlVariable from "../../apiUrlVariable";
 
 export const AvailableMatchesContext = React.createContext();
 
@@ -49,17 +50,13 @@ const AvailableMatches = () => {
             type: "FETCH_MATCHES_REQUEST",
         });
 
-        fetch(
-            `https://entregafinalpptapi.herokuapp.com/getMatches`,
-            // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/getMatches`,
-            {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ getMatchesReq }),
-            }
-        )
+        fetch(`${apiUrlVariable}/getMatches`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ getMatchesReq }),
+        })
             .then((response) => {
                 if (response.ok) {
                     return response.json();
