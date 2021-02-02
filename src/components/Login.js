@@ -35,7 +35,7 @@ export const Login = () => {
         });
 
         fetch(
-            `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/login`,
+            `https://entregafinalpptapi.herokuapp.com/login`,
             {
                 method: "post",
                 headers: {
