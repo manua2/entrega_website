@@ -4,6 +4,9 @@
     top: 50%;
     left: 50%;
     position: fixed;
+}
+
+.zindex-max {
     z-index: 999;
 }
 

@@ -104,7 +104,7 @@ const CreateMatch = (props) => {
     }
 
     return (
-        <div className="center-div">
+        <div className="center-div zindex-max">
             <div className="create-match">
                 <form onSubmit={onSubmit}>
                     <div className="modal-form-inputs">
