@@ -2,7 +2,7 @@ import React from "react";
 import { AuthContext } from "../../../App";
 import MatchCard from "./MatchCard";
 import "../../estilos/home.css";
-import "../estilos/input-styles.css";
+import "../../estilos/input-styles.css";
 
 export const AvailableMatchesContext = React.createContext();
 
