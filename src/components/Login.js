@@ -35,7 +35,7 @@ export const Login = () => {
         });
 
         fetch(
-            `https://entregafinalpptapi.herokuapp.com/login`,
+            `https://cors-anywhere.herokuapp.com/https://entregafinalpptapi.herokuapp.com/login`,
             {
                 method: "post",
                 headers: {
