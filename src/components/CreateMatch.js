@@ -58,7 +58,7 @@ const CreateMatch = (props) => {
         }
 
         fetch(
-            `https://cors-anywhere.herokuapp.com/https://entregafinalpptapi.herokuapp.com/createMatch`,
+            `https://entregafinalpptapi.herokuapp.com/createMatch`,
             // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/createMatch`,
             {
                 method: "post",
