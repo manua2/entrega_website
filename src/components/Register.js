@@ -76,6 +76,7 @@ export const Login = () => {
         } else {
             fetch(
                 `https://cors-anywhere.herokuapp.com/https://entregafinalpptapi.herokuapp.com/register`,
+                // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/register`,
                 {
                     method: "post",
                     headers: {

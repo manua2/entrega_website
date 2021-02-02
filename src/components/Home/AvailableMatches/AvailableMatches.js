@@ -51,6 +51,7 @@ const AvailableMatches = () => {
 
         fetch(
             `https://cors-anywhere.herokuapp.com/https://entregafinalpptapi.herokuapp.com/getMatches`,
+            // `${process.env.REACT_APP_API_PROTOCOL}://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/getMatches`,
             {
                 method: "post",
                 headers: {
