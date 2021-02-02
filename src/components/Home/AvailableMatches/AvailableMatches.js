@@ -2,6 +2,7 @@ import React from "react";
 import { AuthContext } from "../../../App";
 import MatchCard from "./MatchCard";
 import "../../estilos/home.css";
+import "../estilos/input-styles.css";
 
 export const AvailableMatchesContext = React.createContext();
 
@@ -83,7 +84,9 @@ const AvailableMatches = () => {
         <React.Fragment>
             <div>
                 {state.isFetching ? (
-                    <span className="loader">Cargando...</span>
+                    <div className="center-div">
+                        <span className="cargando">Cargando...</span>
+                    </div>
                 ) : (
                     <>
                         {state.matches.length > 0 ? (
@@ -98,7 +101,10 @@ const AvailableMatches = () => {
                         ) : (
                             <div className="titulo-seccion no-hay-partidas-mensaje">
                                 <div>No hay partidas disponibles</div>
-                                <div>Pueden ser creadas con el boton "Crear partida"</div>
+                                <div>
+                                    Pueden ser creadas con el boton "Crear
+                                    partida"
+                                </div>
                             </div>
                         )}
                     </>

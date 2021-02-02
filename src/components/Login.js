@@ -75,7 +75,7 @@ export const Login = () => {
     return (
         <div className="container">
             <form onSubmit={handleFormSubmit}>
-                <div className="">
+                <div>
                     <div className="center-div">
                         <h1>Inicio de sesión</h1>
                         <label htmlFor="email" className="input-label">

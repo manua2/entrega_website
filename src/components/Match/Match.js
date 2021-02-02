@@ -84,8 +84,6 @@ export const Match = () => {
         }
     }
 
-    console.log(matchExists)
-
     return (
         <React.Fragment>
             <div>

@@ -2,6 +2,7 @@ import React from "react";
 import { AuthContext } from "../../../App";
 import MatchCard from "./MatchCard";
 import "../../estilos/home.css";
+import "../estilos/input-styles.css";
 
 const initialState = {
     matches: [],
@@ -81,7 +82,9 @@ const MatchHistory = () => {
         <React.Fragment>
             <div>
                 {state.isFetching ? (
-                    <span className="loader">Cargando...</span>
+                    <div className="center-div">
+                        <span className="cargando"></span>
+                    </div>
                 ) : (
                     <>
                         {state.matches.length > 0 && (
