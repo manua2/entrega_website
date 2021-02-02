@@ -232,6 +232,12 @@ const GamePlay = (props) => {
             winner = "Empate";
         } else if (y === "Empate" && z === "Empate") {
             winner = "Empate";
+        } else if (x !== y && z === "Empate") {
+            winner = "Empate";
+        } else if (x !== z && y === "Empate") {
+            winner = "Empate";
+        } else if (y !== z && x === "Empate") {
+            winner = "Empate";
         }
 
         return winner;
@@ -394,12 +400,29 @@ const GamePlay = (props) => {
 
             {showButton && partidaContinua ? (
                 <div className="button-div">
-                    <button className="button-pick" onClick={() => onClick("Piedra")}>Piedra</button>
-                    <button className="button-pick" onClick={() => onClick("Papel")}>Papel</button>
-                    <button className="button-pick" onClick={() => onClick("Tijera")}>Tijera</button>
+                    <button
+                        className="button-pick"
+                        onClick={() => onClick("Piedra")}
+                    >
+                        Piedra
+                    </button>
+                    <button
+                        className="button-pick"
+                        onClick={() => onClick("Papel")}
+                    >
+                        Papel
+                    </button>
+                    <button
+                        className="button-pick"
+                        onClick={() => onClick("Tijera")}
+                    >
+                        Tijera
+                    </button>
                 </div>
             ) : (
-                !partidaTerminada && <div className="no-turno">No es tu turno!</div>
+                !partidaTerminada && (
+                    <div className="no-turno">No es tu turno!</div>
+                )
             )}
         </div>
     );
