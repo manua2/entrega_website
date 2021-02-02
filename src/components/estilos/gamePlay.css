@@ -50,7 +50,8 @@
     margin-top: 30px;
 }
 
-.no-jugadas, .no-turno {
+.no-jugadas,
+.no-turno {
     display: flex;
     justify-content: center;
     margin: 15px;
@@ -67,5 +68,11 @@
 @media (max-width: 991px) {
     .resultado-final {
         display: grid;
+    }
+}
+
+@media (max-width: 565px) {
+    .resultado-final {
+        font-size: larger;
     }
 }

@@ -133,4 +133,7 @@
     .boton-mobile {
         margin-top: 10px;
     }
+    .match-info {
+        flex-direction: column;
+    }
 }
