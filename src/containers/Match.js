@@ -93,12 +93,12 @@ export const Match = () => {
                         <div className="loading-div">
                             <Spinner animation="border" />
                         </div>
-                    ) : usuarioNoEnLaPartida ? (
-                        <div className="center-div">
-                            <span className="error">Ocurrió un error</span>
-                        </div>
                     ) : (
-                        <>
+                        usuarioNoEnLaPartida ? (
+                            <div className="center-div">
+                                <span className="error">Ocurrió un error</span>
+                            </div>
+                        ) : (<>
                             <div className="match-info">
                                 <p className="p-sin-margen-600">
                                     Creador de la partida: {state.match.player}
@@ -108,7 +108,7 @@ export const Match = () => {
                                 </p>
                             </div>
                             <GamePlay match={state.match} />
-                        </>
+                        </>)
                     )
                 ) : (
                     <Redirect
@@ -118,20 +118,6 @@ export const Match = () => {
                         }}
                     />
                 )}
-                {/* {usuarioNoEnLaPartida && (
-                    <div className="center-div">
-                        <span className="error">Ocurrió un error</span>
-                    </div>
-                )} */}
-                {/* {state.isFetching ? (
-                    <div className="loading-div"></div>
-                ) : (
-                    usuarioNoEnLaPartida && (
-                        <div className="center-div">
-                            <span className="error">Ocurrió un error</span>
-                        </div>
-                    )
-                )} */}
             </div>
         </React.Fragment>
     );
