@@ -1,4 +1,4 @@
-import "../components/estilos/home.css";
+import "../estilos/home.css";
 import React from "react";
 import CreateMatch from "../components/CreateMatch";
 import { AuthContext } from "../App";

@@ -1,8 +1,8 @@
 import React from "react";
 import { AuthContext } from "../App";
 import { useParams } from "react-router-dom";
-import "../components/estilos/matches.css";
-import "../components/estilos/input-styles.css";
+import "../estilos/matches.css";
+import "../estilos/input-styles.css";
 import GamePlay from "../components/GamePlay";
 import { Redirect } from "react-router";
 import apiUrlVariable from "../components/apiUrlVariable";

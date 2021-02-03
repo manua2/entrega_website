@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthContext } from "../App";
-import "./estilos/input-styles.css";
+import "../estilos/input-styles.css";
 import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Redirect } from "react-router";

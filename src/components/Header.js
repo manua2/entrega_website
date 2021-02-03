@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthContext } from "../App";
-import "./estilos/navigation.css";
+import "../estilos/navigation.css";
 import { Link } from "react-router-dom";
 
 export const Header = () => {

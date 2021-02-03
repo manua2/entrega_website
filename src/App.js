@@ -3,7 +3,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./containers/Home";
 import Header from "./components/Header";
-import "./app.css";
+import "./estilos/app.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Match from "./containers/Match";
 

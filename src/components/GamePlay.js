@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthContext } from "../App";
-import "./estilos/input-styles.css";
-import "./estilos/gamePlay.css";
+import "../estilos/input-styles.css";
+import "../estilos/gamePlay.css";
 import apiUrlVariable from "./apiUrlVariable";
 
 const GamePlay = (props) => {

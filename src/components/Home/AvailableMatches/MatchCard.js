@@ -1,8 +1,8 @@
 import React from "react";
 import { AuthContext } from "../../../App";
-import "../../estilos/matches.css";
+import "../../../estilos/matches.css";
 import { Link } from "react-router-dom";
-import "../../estilos/gamePlay.css";
+import "../../../estilos/gamePlay.css";
 
 export const MatchCard = ({ match }) => {
     const { state: authState } = React.useContext(AuthContext);
