@@ -98,7 +98,7 @@ const CreateMatch = (props) => {
                     setErrorMessage("Ese es tu email");
                 } else if (error.status === 406) {
                     setErrorMessage("Ya existe una partida contra ese usuario")
-                } else if (error.status) {
+                } else if (error.status === 400) {
                     setErrorMessage("Ese email no esta registrado");
                 } else {
                     setErrorMessage("Ocurrio un error")

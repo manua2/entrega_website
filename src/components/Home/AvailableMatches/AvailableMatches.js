@@ -4,6 +4,7 @@ import MatchCard from "./MatchCard";
 import "../../../estilos/home.css";
 import "../../../estilos/input-styles.css";
 import apiUrlVariable from "../../apiUrlVariable";
+import Spinner from "react-bootstrap/Spinner";
 
 export const AvailableMatchesContext = React.createContext();
 
@@ -82,8 +83,8 @@ const AvailableMatches = () => {
         <React.Fragment>
             <div>
                 {state.isFetching ? (
-                    <div className="center-div">
-                        <span className="cargando">Cargando...</span>
+                    <div className="loading-div">
+                        <Spinner animation="border" />
                     </div>
                 ) : (
                     <>

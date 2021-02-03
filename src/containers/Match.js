@@ -3,9 +3,11 @@ import { AuthContext } from "../App";
 import { useParams } from "react-router-dom";
 import "../estilos/matches.css";
 import "../estilos/input-styles.css";
+import "../estilos/home.css";
 import GamePlay from "../components/GamePlay";
 import { Redirect } from "react-router";
 import apiUrlVariable from "../components/apiUrlVariable";
+import Spinner from "react-bootstrap/Spinner";
 
 const initialState = {
     match: [],
@@ -88,8 +90,8 @@ export const Match = () => {
             <div>
                 {matchExists ? (
                     state.isFetching ? (
-                        <div className="center-div">
-                            <span className="cargando">Cargando...</span>
+                        <div className="loading-div">
+                            <Spinner animation="border" />
                         </div>
                     ) : usuarioNoEnLaPartida ? (
                         <div className="center-div">
@@ -116,6 +118,20 @@ export const Match = () => {
                         }}
                     />
                 )}
+                {/* {usuarioNoEnLaPartida && (
+                    <div className="center-div">
+                        <span className="error">Ocurrió un error</span>
+                    </div>
+                )} */}
+                {/* {state.isFetching ? (
+                    <div className="loading-div"></div>
+                ) : (
+                    usuarioNoEnLaPartida && (
+                        <div className="center-div">
+                            <span className="error">Ocurrió un error</span>
+                        </div>
+                    )
+                )} */}
             </div>
         </React.Fragment>
     );
