@@ -59,10 +59,18 @@ export const Login = () => {
                 });
             })
             .catch((error) => {
+                var message;
+                if (error.status === 400) {
+                    message = "Ese email no esta registrado";
+                } else if (error.status === 401) {
+                    message = "Contraseña incorrecta";
+                } else {
+                    message = "Ocurrio un error"
+                }
                 setData({
                     ...data,
                     isSubmitting: false,
-                    errorMessage: "Credenciales invalidas",
+                    errorMessage: message,
                 });
             });
         if (data.errorMessage === null) {

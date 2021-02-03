@@ -13,6 +13,8 @@ const CreateMatch = (props) => {
 
     const onClose = (e) => {
         props.onClose && props.onClose(e);
+        setOpponent("")
+        setErrorMessage("")
     };
 
     function testEmail(x) {
@@ -94,8 +96,12 @@ const CreateMatch = (props) => {
                     setErrorMessage("Email invalido");
                 } else if (error.status === 403) {
                     setErrorMessage("Ese es tu email");
-                } else {
+                } else if (error.status === 406) {
+                    setErrorMessage("Ya existe una partida contra ese usuario")
+                } else if (error.status) {
                     setErrorMessage("Ese email no esta registrado");
+                } else {
+                    setErrorMessage("Ocurrio un error")
                 }
             });
     };

@@ -62,7 +62,7 @@ div > nav > h2 {
 .greet {
     margin-bottom: 0;
     color: white;
-    margin-right: 10px;
+    margin: 10px;
 }
 
 .header-button {

@@ -1,8 +1,8 @@
 import React from "react";
-import { AuthContext } from "../../App";
-import "../estilos/input-styles.css";
-import "../estilos/gamePlay.css";
-import apiUrlVariable from "../apiUrlVariable";
+import { AuthContext } from "../App";
+import "./estilos/input-styles.css";
+import "./estilos/gamePlay.css";
+import apiUrlVariable from "./apiUrlVariable";
 
 const GamePlay = (props) => {
     const { state: authState } = React.useContext(AuthContext);
@@ -399,7 +399,7 @@ const GamePlay = (props) => {
             {showButton && partidaContinua ? (
                 <div className="button-div">
                     <button
-                        className="button-pick"
+                        className="button-pick button-piedra"
                         onClick={() => onClick("Piedra")}
                     >
                         Piedra
@@ -411,7 +411,7 @@ const GamePlay = (props) => {
                         Papel
                     </button>
                     <button
-                        className="button-pick"
+                        className="button-pick button-tijera"
                         onClick={() => onClick("Tijera")}
                     >
                         Tijera

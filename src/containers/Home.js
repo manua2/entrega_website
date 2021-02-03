@@ -1,9 +1,9 @@
-import "../estilos/home.css";
+import "../components/estilos/home.css";
 import React from "react";
-import CreateMatch from "../CreateMatch";
-import { AuthContext } from "../../App";
-import AvailableMatches from "./AvailableMatches/AvailableMatches";
-import MatchHistory from "./MatchHistory/MatchHistory";
+import CreateMatch from "../components/CreateMatch";
+import { AuthContext } from "../App";
+import AvailableMatches from "../components/Home/AvailableMatches/AvailableMatches";
+import MatchHistory from "../components/Home/MatchHistory/MatchHistory";
 
 export const Home = () => {
     const [
