@@ -38,8 +38,8 @@
 }
 
 .button {
-    background-color: #007bff;
-    border: 3px solid #0062cc;
+    background-color: $colorPrimario;
+    border: 3px solid $colorSecundario;
     color: white;
     border-radius: 5px;
     width: 100%;
@@ -51,7 +51,7 @@
 }
 
 .button:hover {
-    background-color: #0062cc;
+    background-color: $colorSecundario;
     transition: background-color ease 0.3s;
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { AuthContext } from "../App";
-import "../estilos/input-styles.css";
 import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Redirect } from "react-router";
 import apiUrlVariable from "./apiUrlVariable";
+import "../estilos/styles.scss"
 
 export const Login = () => {
     const { dispatch } = React.useContext(AuthContext);

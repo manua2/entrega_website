@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthContext } from "../App";
-import "../estilos/input-styles.css";
 import apiUrlVariable from "./apiUrlVariable";
+import "../estilos/styles.scss"
 
 const CreateMatch = (props) => {
     const { state: authState } = React.useContext(AuthContext);

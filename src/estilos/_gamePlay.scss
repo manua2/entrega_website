@@ -27,7 +27,7 @@
 }
 
 .button-pick {
-    background-color: #007bff;
+    background-color: $colorPrimario;
     padding: 20px;
     padding-left: 40px;
     padding-right: 40px;
@@ -36,7 +36,7 @@
     margin-bottom: 10px;
     color: #000;
     font-weight: 600;
-    border: 2px solid #0062cc;
+    border: 2px solid $colorSecundario;
 }
 
 .button-piedra {
@@ -48,7 +48,7 @@
 }
 
 .button-pick:hover {
-    background-color: #0062cc;
+    background-color: $colorSecundario;
     transition: background-color ease 0.3s;
 }
 

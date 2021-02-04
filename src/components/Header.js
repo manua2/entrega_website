@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthContext } from "../App";
-import "../estilos/navigation.css";
 import { Link } from "react-router-dom";
+import "../estilos/styles.scss"
 
 export const Header = () => {
     const { state, dispatch } = React.useContext(AuthContext);
