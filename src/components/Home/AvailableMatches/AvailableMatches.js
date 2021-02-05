@@ -5,8 +5,6 @@ import apiUrlVariable from "../../apiUrlVariable";
 import Spinner from "react-bootstrap/Spinner";
 import "../../../estilos/styles.scss"
 
-export const AvailableMatchesContext = React.createContext();
-
 const initialState = {
     matches: [],
     isFetching: false,

@@ -3,7 +3,7 @@ import CreateMatch from "../components/CreateMatch";
 import { AuthContext } from "../App";
 import AvailableMatches from "../components/Home/AvailableMatches/AvailableMatches";
 import MatchHistory from "../components/Home/MatchHistory/MatchHistory";
-import "../estilos/styles.scss"
+import "../estilos/styles.scss";
 
 export const Home = () => {
     const [
@@ -33,8 +33,10 @@ export const Home = () => {
                     />
                 </>
             )}
-            <AvailableMatches />
-            <MatchHistory />
+            <div className="partidas">
+                <AvailableMatches />
+                <MatchHistory />
+            </div>
         </div>
     );
 };

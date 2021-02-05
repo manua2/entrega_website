@@ -21,6 +21,7 @@
     justify-content: space-evenly;
     background-color: ALICEBLUE;
     padding: 10px;
+    border-bottom: 1px solid lightgray;
 }
 
 .p-sin-margen-600 {
@@ -95,17 +96,21 @@
     }
 }
 
-@media (max-width: 1920px) {
+@media (min-width: 1300px) {
     .card {
-        margin-left: 400px;
-        margin-right: 400px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
-}
 
-@media (max-width: 1400px) {
-    .card {
-        margin-left: 200px;
-        margin-right: 200px;
+    .seccion {
+        width: 550px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .partidas {
+        display: flex;
+        justify-content: center;
     }
 }
 
