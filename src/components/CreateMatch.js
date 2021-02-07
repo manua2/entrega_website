@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthContext } from "../App";
 import apiUrlVariable from "./apiUrlVariable";
-import "../estilos/styles.scss"
+import "../estilos/styles.scss";
 
 const CreateMatch = (props) => {
     const { state: authState } = React.useContext(AuthContext);
@@ -13,13 +13,14 @@ const CreateMatch = (props) => {
 
     const onClose = (e) => {
         props.onClose && props.onClose(e);
-        setOpponent("")
-        setErrorMessage("")
+        setOpponent("");
+        setErrorMessage("");
     };
 
     function testEmail(x) {
         if (
-            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+            // eslint-disable-next-line
+            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
                 x
             )
         ) {
@@ -60,17 +61,14 @@ const CreateMatch = (props) => {
             invalidEmail = false;
         }
 
-        fetch(
-            `${apiUrlVariable}/createMatch`,
-            {
-                method: "post",
-                headers: {
-                    Authorization: authState.token,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(match),
-            }
-        )
+        fetch(`${apiUrlVariable}/createMatch`, {
+            method: "post",
+            headers: {
+                Authorization: authState.token,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(match),
+        })
             .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -97,11 +95,11 @@ const CreateMatch = (props) => {
                 } else if (error.status === 403) {
                     setErrorMessage("Ese es tu email");
                 } else if (error.status === 406) {
-                    setErrorMessage("Ya existe una partida contra ese usuario")
+                    setErrorMessage("Ya existe una partida contra ese usuario");
                 } else if (error.status === 400) {
                     setErrorMessage("Ese email no esta registrado");
                 } else {
-                    setErrorMessage("Ocurrio un error")
+                    setErrorMessage("Ocurrio un error");
                 }
             });
     };
@@ -123,7 +121,7 @@ const CreateMatch = (props) => {
                             name="opponent"
                             type="text"
                             value={opponent}
-                            onChange={(e) => setOpponent(e.target.value)}
+                            onChange={(e) => setOpponent(e.target.value.trim())}
                             className="input-style"
                         />
                     </div>

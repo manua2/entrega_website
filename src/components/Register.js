@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Redirect } from "react-router";
 import apiUrlVariable from "./apiUrlVariable";
-import "../estilos/styles.scss"
+import "../estilos/styles.scss";
 
 export const Login = () => {
     const { dispatch } = React.useContext(AuthContext);
@@ -46,7 +46,8 @@ export const Login = () => {
         if (
             inputData.name === "" ||
             inputData.email === "" ||
-            !/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+            // eslint-disable-next-line
+            !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
                 inputData.email
             ) ||
             inputData.password === "" ||
@@ -58,7 +59,8 @@ export const Login = () => {
             } else if (inputData.email === "") {
                 message = "El email es necesario";
             } else if (
-                !/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                // eslint-disable-next-line
+                !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
                     inputData.email
                 )
             ) {
@@ -143,7 +145,12 @@ export const Login = () => {
                         <input
                             type="text"
                             value={data.email}
-                            onChange={handleInputChange}
+                            onChange={(e) =>
+                                setData({
+                                    ...data,
+                                    email: e.target.value.trim(),
+                                })
+                            }
                             name="email"
                             id="email"
                             className="input-style"
