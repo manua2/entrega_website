@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Redirect } from "react-router";
 import apiUrlVariable from "./apiUrlVariable";
-import "../estilos/styles.scss"
+import "../estilos/styles.scss";
 
 export const Login = () => {
     const { dispatch } = React.useContext(AuthContext);
@@ -35,46 +35,79 @@ export const Login = () => {
             errorMessage: null,
         });
 
-        fetch(`${apiUrlVariable}/login`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: data.email,
-                password: data.password,
-            }),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                }
+        const inputData = {
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+        };
 
-                throw response;
-            })
-            .then((data) => {
-                dispatch({
-                    type: "LOGIN",
-                    payload: data,
-                });
-            })
-            .catch((error) => {
-                var message;
-                if (error.status === 400) {
-                    message = "Ese email no esta registrado";
-                } else if (error.status === 401) {
-                    message = "Contraseña incorrecta";
-                } else {
-                    message = "Ocurrio un error"
-                }
-                setData({
-                    ...data,
-                    isSubmitting: false,
-                    errorMessage: message,
-                });
+        if (
+            inputData.email === "" ||
+            // eslint-disable-next-line
+            !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+                inputData.email
+            ) ||
+            inputData.password === ""
+        ) {
+            let message;
+            if (inputData.email === "") {
+                message = "El email es necesario";
+            } else if (
+                // eslint-disable-next-line
+                !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+                    inputData.email
+                )
+            ) {
+                message = "Email invalido";
+            } else if (inputData.password === "") {
+                message = "La contraseña es necesaria";
+            }
+            setData({
+                ...data,
+                isSubmitting: false,
+                errorMessage: message,
             });
-        if (data.errorMessage === null) {
-            setSubmitted(true);
+        } else {
+            fetch(`${apiUrlVariable}/login`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: data.email,
+                    password: data.password,
+                }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+
+                    throw response;
+                })
+                .then((data) => {
+                    dispatch({
+                        type: "LOGIN",
+                        payload: data,
+                    });
+                })
+                .catch((error) => {
+                    var message;
+                    if (error.status === 400) {
+                        message = "Ese email no esta registrado";
+                    } else if (error.status === 401) {
+                        message = "Contraseña incorrecta";
+                    } else {
+                        message = "Ocurrio un error";
+                    }
+                    setData({
+                        ...data,
+                        isSubmitting: false,
+                        errorMessage: message,
+                    });
+                });
+            if (data.errorMessage === null) {
+                setSubmitted(true);
+            }
         }
     };
 
